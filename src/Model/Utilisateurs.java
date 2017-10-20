@@ -1,12 +1,35 @@
 package Model;
 
+/**
+ *Utilisateur's class witch represents the patient
+ * 
+ * @author Ponceau Nathanael
+ * @author Maestracci Damien
+ * @author Konate Mariam
+ */
 public class Utilisateurs {
+	
+	//id user 
     private int id;
+    
+    // social number
     private int numeroSecu;
+    
+    // username
     private String nom;
+    
+    // user last name
     private String prenom;
 
 
+    /**
+     * Constructor of user
+     * 
+     * @param id id user
+     * @param numeroSecu social number
+     * @param nom username
+     * @param premon user last name
+     */
     public Utilisateurs(int id, int numeroSecu, String nom, String prenom) {
         this.id = id;
         this.numeroSecu = numeroSecu;
@@ -14,6 +37,7 @@ public class Utilisateurs {
         this.prenom = prenom;
     }
 
+    
     public int getId() {
         return id;
     }
