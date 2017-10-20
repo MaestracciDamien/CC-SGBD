@@ -1,8 +1,8 @@
 package Controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import Model.Utilisateurs;
+
+import java.sql.*;
 
 public class ControllerPrincipal {
 
@@ -34,10 +34,27 @@ public class ControllerPrincipal {
 
     }
 
+    public Utilisateurs selectUtilisateurs(int numeroSecu, String nom, String prenom) throws SQLException {
+        Utilisateurs retour = null;
+        PreparedStatement prep = conn.prepareStatement("Select * from Utilisateurs where  numeroSecu = ? AND nom = ? AND prenom= ?; ");
+        prep.setInt(1, numeroSecu);
+        prep.setString(2, nom);
+        prep.setString(3, prenom);
+        ResultSet res = prep.executeQuery();
+        while (res.next()) {
+            for (int i = 1; i < res.getMetaData().getColumnCount(); i++) {
+                retour = new Utilisateurs(res.getInt(1), res.getInt(2), res.getString(3), res.getString(4));
+            }
+        }
+        prep.close();
 
-    public void main(){
+        return retour;
+    }
+
+    public static void main(String args[]) {
         try {
             ControllerPrincipal programme = new ControllerPrincipal();
+            System.out.println(programme.selectUtilisateurs(21607739,"MAESTRACCI","DAMIEN"));
         } catch (Exception e) {
             e.printStackTrace();
         }

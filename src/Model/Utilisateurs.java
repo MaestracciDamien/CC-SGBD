@@ -45,4 +45,14 @@ public class Utilisateurs {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateurs{" +
+                "id=" + id +
+                ", numeroSecu=" + numeroSecu +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                '}';
+    }
 }
