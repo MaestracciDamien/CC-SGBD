@@ -70,12 +70,10 @@ public class ControllerPrincipal {
 
         return retour;
     }
-    public Utilisateurs selectAnalyse(int numeroSecu, String nom, String prenom) throws SQLException {
+    public Utilisateurs selectAnalyse(int id) throws SQLException {
         Utilisateurs retour = null;
         PreparedStatement prep = conn.prepareStatement("Select * from Utilisateurs where  numeroSecu = ? AND nom = ? AND prenom= ?; ");
-        prep.setInt(1, numeroSecu);
-        prep.setString(2, nom);
-        prep.setString(3, prenom);
+        prep.setInt(1, id);
         ResultSet res = prep.executeQuery();
         while (res.next()) {
             for (int i = 1; i < res.getMetaData().getColumnCount(); i++) {
