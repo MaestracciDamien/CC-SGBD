@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Analyse;
 import Model.Utilisateurs;
 
 import java.sql.*;
@@ -47,9 +48,16 @@ public class ControllerPrincipal {
      */
     public void reserverVisite(String nom, String prenom, int numSecu, int idAnalyse) throws Exception {
         Utilisateurs user = selectUtilisateurs(numSecu, nom, prenom);
-        if (user == null){
+        if (user == null) {
             throw new Exception("utilisateurs incorrect");
         }
+        Analyse anal = selectAnalyse(idAnalyse);
+        if(anal == null){
+            throw new Exception("analyse incorrect");
+        }
+
+
+    }
 
 
 
@@ -70,14 +78,14 @@ public class ControllerPrincipal {
 
         return retour;
     }
-    public Utilisateurs selectAnalyse(int id) throws SQLException {
-        Utilisateurs retour = null;
-        PreparedStatement prep = conn.prepareStatement("Select * from Utilisateurs where  numeroSecu = ? AND nom = ? AND prenom= ?; ");
+    public Analyse selectAnalyse(int id) throws SQLException {
+        Analyse retour = null;
+        PreparedStatement prep = conn.prepareStatement("Select * from Analyse where  id = ; ");
         prep.setInt(1, id);
         ResultSet res = prep.executeQuery();
         while (res.next()) {
             for (int i = 1; i < res.getMetaData().getColumnCount(); i++) {
-                retour = new Utilisateurs(res.getInt(1), res.getInt(2), res.getString(3), res.getString(4));
+                retour = new Analyse( res.getInt(2),res.getString(1));
             }
         }
         prep.close();

@@ -21,7 +21,7 @@ public class Medecin extends Utilisateurs {
      * @param id id user
      * @param numeroSecu social number
      * @param nom username
-     * @param premon user last name
+     * @param prenom user last name
      * @param id1 user linked to doctor
      * @param salaire doctor salary
      */

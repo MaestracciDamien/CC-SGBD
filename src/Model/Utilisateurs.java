@@ -28,7 +28,7 @@ public class Utilisateurs {
      * @param id id user
      * @param numeroSecu social number
      * @param nom username
-     * @param premon user last name
+     * @param prenom user last name
      */
     public Utilisateurs(int id, int numeroSecu, String nom, String prenom) {
         this.id = id;
